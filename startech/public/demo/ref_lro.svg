@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- Surface noise filter simulating lunar regolith micro-craters -->
+    <filter id="regolith-noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 0.15 0" result="coloredNoise" />
+      <feComposite in="SourceGraphic" in2="coloredNoise" operator="over" />
+    </filter>
+
+    <radialGradient id="crater-gradient" cx="45%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#18202d"/>
+      <stop offset="65%" stop-color="#0e141f"/>
+      <stop offset="90%" stop-color="#2a384c"/>
+      <stop offset="100%" stop-color="#41536b"/>
+    </radialGradient>
+
+    <radialGradient id="crater2-gradient" cx="40%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#141a24"/>
+      <stop offset="70%" stop-color="#0b0f17"/>
+      <stop offset="95%" stop-color="#2c3b50"/>
+      <stop offset="100%" stop-color="#3d4f67"/>
+    </radialGradient>
+
+    <linearGradient id="rim-shadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080e" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#0a1019" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#556c88" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <radialGradient id="peak-gradient" cx="35%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#7e9bbd"/>
+      <stop offset="70%" stop-color="#37485e"/>
+      <stop offset="100%" stop-color="#141a24"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base Lunar Crust Surface -->
+  <rect width="800" height="800" fill="#111824" />
+  <rect width="800" height="800" fill="#1c2534" opacity="0.85" filter="url(#regolith-noise)" />
+
+  <g transform="translate(400, 400) rotate(0) scale(1) translate(-400, -400)">
+    <!-- Ejecta Rays -->
+    <path d="M 400 380 L 150 120 M 400 380 L 680 140 M 400 380 L 720 560 M 400 380 L 220 680 M 400 380 L 90 410" stroke="#33445c" stroke-width="4" stroke-dasharray="8,12" opacity="0.35" />
+    <path d="M 400 380 L 290 80 M 400 380 L 590 680 M 400 380 L 120 280" stroke="#485e7e" stroke-width="2" stroke-dasharray="12,8" opacity="0.25" />
+
+    <!-- Major Impact Crater: Boguslawsky Primary Rim -->
+    <!-- Rim Shadow Extent -->
+    <ellipse cx="412" cy="394" rx="188" ry="176" fill="url(#rim-shadow)" />
+    <!-- Crater Interior Floor -->
+    <ellipse cx="400" cy="380" rx="175" ry="165" fill="url(#crater-gradient)" />
+    
+    <!-- Terraced Inner Walls -->
+    <ellipse cx="405" cy="382" rx="150" ry="140" fill="none" stroke="#253245" stroke-width="6" opacity="0.7" />
+    <ellipse cx="408" cy="384" rx="125" ry="118" fill="none" stroke="#1d2737" stroke-width="4" opacity="0.6" />
+
+    <!-- Central Peak Complex -->
+    <path d="M 388 385 Q 402 360 416 385 Q 425 400 405 402 Q 390 402 388 385 Z" fill="url(#peak-gradient)" />
+    <path d="M 398 375 L 420 395 L 402 402 Z" fill="#06090f" opacity="0.8" />
+
+    <!-- Secondary Satellite Crater A (North-East) -->
+    <ellipse cx="587.2" cy="228.4" rx="64" ry="58" fill="#080c13" />
+    <ellipse cx="580" cy="220" rx="60" ry="54" fill="url(#crater2-gradient)" />
+    <ellipse cx="582" cy="221" rx="52" ry="46" fill="none" stroke="#35475f" stroke-width="3" opacity="0.6" />
+
+    <!-- Satellite Crater B (South-West) -->
+    <ellipse cx="236" cy="567" rx="52" ry="48" fill="#080c13" />
+    <ellipse cx="230" cy="560" rx="48" ry="44" fill="url(#crater2-gradient)" />
+
+    <!-- Small Crater Cluster -->
+    <circle cx="280" cy="210" r="18" fill="#141b27" stroke="#2c3a4f" stroke-width="2" />
+    <circle cx="280" cy="210" r="14" fill="#090d14" />
+    
+    <circle cx="320" cy="180" r="12" fill="#141b27" stroke="#2c3a4f" stroke-width="1.5" />
+    <circle cx="320" cy="180" r="9" fill="#090d14" />
+
+    <circle cx="530" cy="520" r="24" fill="#141b27" stroke="#37485e" stroke-width="2" />
+    <circle cx="530" cy="520" r="19" fill="#090d14" />
+
+    <circle cx="680" cy="420" r="16" fill="#141b27" stroke="#2c3a4f" stroke-width="1.5" />
+    <circle cx="680" cy="420" r="12" fill="#090d14" />
+
+    <circle cx="160" cy="340" r="22" fill="#141b27" stroke="#37485e" stroke-width="2" />
+    <circle cx="160" cy="340" r="17" fill="#090d14" />
+
+    <!-- Micro-boulder fields -->
+    <circle cx="430" cy="340" r="3" fill="#6982a3" />
+    <circle cx="436" cy="345" r="2" fill="#6982a3" />
+    <circle cx="370" cy="420" r="3" fill="#6982a3" />
+    <circle cx="362" cy="425" r="2.5" fill="#6982a3" />
+    <circle cx="490" cy="290" r="3.5" fill="#6982a3" />
+    <circle cx="260" cy="480" r="3" fill="#6982a3" />
+  </g>
+
+  <!-- Scientific Coordinate Reticle & Telemetry Overlay -->
+  <g opacity="0.45" stroke="#55e6ff" stroke-width="0.75">
+    <line x1="20" y1="20" x2="60" y2="20" />
+    <line x1="20" y1="20" x2="20" y2="60" />
+    <line x1="780" y1="20" x2="740" y2="20" />
+    <line x1="780" y1="20" x2="780" y2="60" />
+    <line x1="20" y1="780" x2="60" y2="780" />
+    <line x1="20" y1="780" x2="20" y2="740" />
+    <line x1="780" y1="780" x2="740" y2="780" />
+    <line x1="780" y1="780" x2="780" y2="740" />
+  </g>
+
+  <!-- Scientific Mission Stamp -->
+  <rect x="28" y="752" width="220" height="24" fill="#06090e" opacity="0.85" rx="3" stroke="#253549" stroke-width="1" />
+  <text x="36" y="768" fill="#55e6ff" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" letter-spacing="1">
+    NASA LRO NAC 0.50M // LAT -72.90°
+  </text>
+
+  <!-- Sun Vector Indicator -->
+  <g transform="translate(730, 40)">
+    <circle cx="0" cy="0" r="16" fill="#080c14" stroke="#4776ff" stroke-width="1" opacity="0.8" />
+    <line x1="0" y1="0" x2="8" y2="-8" stroke="#ffc857" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="-16" y="26" fill="#7d8ea5" font-family="'JetBrains Mono', monospace" font-size="9">SUN 35°</text>
+  </g>
+</svg>
